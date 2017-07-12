@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	img{
+		width: 750px;
+		height: 400px;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	ul,li{
+		list-style: none;	
+	}
+	.bian{
+		width: 750px;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+	}
+	.list{
+		width: 4550px;
+		z-index: 99;
+		position: absolute;
+		top: 20px;
+		/* left: 10px; */
+		overflow: hidden;
+
+	}
+	.list li{
+		float: left;
+		width: 750px;
+		/* overflow: hidden;	 */
+	}
+	.kuang{
+		height: 400px;
+		width: 750px;
+		z-index: 1;
+		border-top: 20px solid gray;
+		border-radius: 10px;
+		border-bottom: 20px solid gray;
+	}
+	.next{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		color: white;
+		font-size: 50px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 50px;
+		cursor: pointer;
+		border: 1px solid transparent;
+		position: absolute;
+		z-index: 101;
+		top: 195px;
+		right: 0px;
+		background-color: gray;
+		border-radius: 14px;
+	}
+	.prev{
+		position: absolute;
+		left: 0px;
+		top: 195px;
+		width: 50px;
+		height: 50px;
+		color: white;
+		z-index: 101;
+		font-size: 50px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 50px;
+		cursor: pointer;
+		border: 1px solid transparent;
+		background-color: gray;
+		border-radius: 14px;
+	}
+	.nav{
+		width: 155px;
+		overflow: hidden;
+		position: absolute;
+		bottom: 25px;
+		right: 15px;
+		z-index: 99;
+	}
+	.nav li{
+		border: 3px solid gray;
+		width: 20px;
+		height: 20px;
+		float: left;
+	}
+	.click_after{
+		background-color: white;
+	}
+	</style>
+</head>
+<body>
+	<div class="bian">
+	<div class="kuang"></div>
+		<ul class="list">
+			<li class="li-1"><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/4.jpg" alt=""></li>
+			<li><img src="images/5.jpg" alt=""></li>
+			<li><img src="images/6.jpg" alt=""></li>
+		</ul>
+		<ul class="nav">
+			<li class="click_after"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div class="next">&gt;</div>
+		<div class="prev">&lt;</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var i=0;
+	$(".nav li").click(function(event) {
+			i=$(this).index()
+			// alert(i*-750)
+			$(this).addClass("click_after");
+			$(this).siblings().removeClass("click_after");
+			$(".list").animate({"left":i*-750}, 700);
+	});
+
+
+		$(".next").click(function() {
+			i=i+1;
+			if(i>5)
+			{
+				$(".list").stop().animate({"left":20}, 600).animate({"left":0}, 400);
+				i=0;
+			}
+			else{
+				$(".list").stop().animate({"left":i * -770}, 600).animate({"left":i * -750}, 400);		
+			}
+			$(".nav li:eq("+i+")").addClass("click_after");
+			$(".nav li:eq("+i+")").siblings().removeClass("click_after")
+		});
+
+
+
+
+		$(".prev").click(function() {
+			i=i-1;
+			if(i<0)
+			{
+				$(".list").stop().animate({"left":-3770}, 500).animate({"left":5 * -750}, 500);
+				i=5;
+				
+			}
+			else{
+				$(".list").stop().animate({"left":i * -730}, 400).animate({"left":i * -750}, 600);
+			}
+			$(".nav li:eq("+i+")").addClass("click_after");
+			$(".nav li:eq("+i+")").siblings().removeClass("click_after")
+		});
+
+
+
+})
+
+</script>
+</ht
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ml>
